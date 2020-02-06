@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">
+                <div class="card" id="card" >
+                    <div class="card-header">
+                        <h2 class="card-title float-left">Tasks</h2>
+                        <span class="float-right" id='tasks-remaining'></span>
+                    </div>
+                    <div class="card-body">
+                        <form id="task-form">
+                            <div class="form-row mb-4">
+                                <div class="col">
+                                    <input class="form-control mb-3" type="text" id="filter-field" name="task" placeholder="Filter tasks">
+                                    <ul class="list-group mb-5" id="task-list">
+                                    </ul>
+                                        <input class="form-control mb-3" type="text" id="add-field" name="task" placeholder="Add a task">
+                                        <button class="btn btn-primary btn-block" id="add-button">Add a task</button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-sm-6 mb-2">
+                                    <button class="btn btn-danger btn-block" id="clear-all-button">Clear all tasks</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-danger btn-block disabled" id="clear-completed-button">Clear completed tasks</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-action">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
