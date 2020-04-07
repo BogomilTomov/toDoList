@@ -11,40 +11,84 @@
 </head>
 <body>
     <div class="jumbotron">
-        <div class="row">
-            <div class="col">
-                <div class="card" id="card" >
-                    <div class="card-header">
-                        <h2 class="card-title float-left">Tasks</h2>
-                        <span class="float-right" id='tasks-remaining'></span>
+        <div class="card mb-3" id="card" >
+            <div class="card-header">
+                <h2 class="card-title float-left">Tasks</h2>
+                <span class="float-right" id='tasks-remaining'></span>
+            </div>
+            <div class="card-body">
+                <form id="task-form">
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <input class="form-control mb-3" type="text" id="filter-field" name="task" placeholder="Filter tasks">
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <form id="task-form">
-                            <div class="form-row mb-4">
-                                <div class="col">
-                                    <input class="form-control mb-3" type="text" id="filter-field" name="task" placeholder="Filter tasks">
-                                    <ul class="list-group mb-5" id="task-list">
-                                    </ul>
-                                        <input class="form-control mb-3" type="text" id="add-field" name="task" placeholder="Add a task">
-                                        <button class="btn btn-primary btn-block" id="add-button">Add a task</button>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-sm-6 mb-2">
-                                    <button class="btn btn-danger btn-block" id="clear-all-button">Clear all tasks</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <button class="btn btn-danger btn-block disabled" id="clear-completed-button">Clear completed tasks</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="form-row mb-5">
+                        <div class="col">
+                            <ul class="list-group" id="task-list">
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card-action">
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <input class="form-control mb-3" type="text" id="add-field" name="task" placeholder="Add a task">
+                            <button class="btn btn-primary btn-block" id="add-button">Add a task</button>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-row" id="regular-state-buttons">
+                        <div class="col-sm-6 mb-2">
+                            <button class="btn btn-info btn-block" id="clear-all-button">Clear all tasks</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-info btn-block" id="clear-completed-button">Clear completed tasks</button>
+                        </div>
+                    </div>
+                    <div class="form-row" style="display: none;" id="edit-state-buttons">
+                        <div class="col-sm-6 mb-2">
+                            <button class="btn btn-success btn-block" id="save-button">Save</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-secondary btn-block" id="discard-button">Discard</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-action">
             </div>
         </div>
     </div>
+    <script type='text/javascript'  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.js"></script>
+    <script id="task-item" type="text/x-handlebars-template">
+        <li class="list-group-item" data-id='{{id}}'>
+            <div class="form-check-label">
+                {{#if completed}}
+                    <label class="label" style="text-decoration: line-through;">
+                        <input type="checkbox" class="mr-3" checked data-id='{{id}}'>
+                        {{name}}
+                    </label>
+                {{else}}
+                    <label class="label">
+                        <input type="checkbox" class="mr-3" data-id='{{id}}'>
+                        {{name}}
+                    </label>
+                {{/if}}
+                <a href="" class="float-right delete-icon" data-id='{{id}}'>
+                    <i class="fa fa-remove"></i>
+                </a>
+                <a href="" class="float-right edit-icon mr-2" data-id='{{id}}'>
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </div>
+        </li>
+    </script>
+    <script id="message-item" type="text/x-handlebars-template">
+        <div class="card bg-{{color}} mb-2 message">
+            <div class="car-body">{{message}}</div>
+        </div>
+    </script>
+    <script src="task.js"></script>    
+    <script src="datasource.js"></script>
+    <script src="controller.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
